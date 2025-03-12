@@ -1,19 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>@uhtai</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Programming & Game Design since 2022.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: "Poppins", sans-serif;
+    :root {
+        --primary-color: #1e90ff;
+        --background-color: #2d2d2f;
+        --text-color: #ffffff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        min-height: 100vh;
+        padding: clamp(1rem, 3vw, 3rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        max-width: 1400px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+        margin: auto;
+    }
+
+    .profile-section {
+        display: flex;
+        gap: clamp(2rem, 4vw, 4rem);
+        margin-bottom: clamp(4rem, 8vh, 8rem);
+        align-items: flex-start;
+    }
+
+    .avatar {
+        width: clamp(100px, 15vw, 150px);
+        height: clamp(100px, 15vw, 150px);
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--primary-color);
+        flex-shrink: 0;
+    }
+
+    .profile-content {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1rem, 2vw, 2rem);
+        padding-top: 0.5rem;
+    }
+
+    h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin: 0;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(0.75rem, 1.5vw, 1.5rem);
+    }
+
+    a {
+        font-size: clamp(1rem, 1.25vw, 1.25rem);
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: 0.3s ease;
+    }
+
+    .gradient-on-hover:hover {
+        background: linear-gradient(45deg, #e11eff, #ff00aa);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .service-text-container {
+        margin-bottom: clamp(3rem, 6vh, 6rem);
+        text-align: center;
+    }
+
+    .highlight {
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        display: flex;
+        gap: clamp(1rem, 2vw, 2rem);
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .gradient {
+        background: linear-gradient(45deg, #1e90ff, #00ff88);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: clamp(1rem, 2vw, 2rem);
+        margin-bottom: clamp(3rem, 6vh, 6rem);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-icons img {
+        width: clamp(28px, 3.5vw, 40px);
+        height: clamp(28px, 3.5vw, 40px);
+        transition: transform 0.3s ease;
+    }
+
+    .social-icons img:hover {
+        transform: translateY(-3px);
+    }
+
+    footer {
+        text-align: center;
+        padding: clamp(1rem, 2vh, 2rem) 0;
+        border-top: 1px solid #333;
+        margin-top: auto;
+        width: 100%;
+    }
+
+    footer p {
+        margin-bottom: 0.5rem;
+        color: #666;
+        font-size: clamp(0.8rem, 1vw, 1rem);
+    }
+
+    footer a {
+        color: #666;
+        font-size: clamp(0.8rem, 1vw, 1rem);
+    }
+
+    footer a:hover {
+        color: var(--primary-color);
+    }
+
+    @media (max-width: 768px) {
+        .profile-section {
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: clamp(3rem, 6vh, 5rem);
         }
+
+        .profile-content {
+            align-items: center;
+            text-align: center;
+        }
+
+        .highlight {
+            flex-direction: column;
+        }
+
+        .social-icons img {
+            width: clamp(32px, 8vw, 48px);
+            height: clamp(32px, 8vw, 48px);
+        }
+    }
+
+    @media (min-width: 1600px) {
+        body {
+            font-size: 1.1vw;
+        }
+    }
+
+    #service-text {
+        display: inline-block;
+        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; 
+    }
+
+    .fade-out {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: translateY(0px);
+    }
     </style>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="uhtai">
+    <meta property="og:description" content="Programming & Game Design since 2020.">
+    <meta property="og:image" content="https://allowsleep.dev/common/irl.png">
+    <meta property="og:url" content="https://allowsleep.dev">
+    <meta name="theme-color" content="#1e90ff">
+
+    <title>uhtai</title>
+    <link rel="icon" href="common/irl.png" type="image/png">
 </head>
+
 <body>
-    <h1 style="text-align: center;">@uhtai</h1>
-    <p style="text-align: center;">Software Engineer - 3 years of experience</p>
-    <button style="align-self: center;">Portfolio - Button doesn't do anything yet.</button>
+    <div class="container">
+        <div class="profile-section">
+            <img src="https://cdn.discordapp.com/avatars/1172976066747453450/759958d56d7c9e595c1ca9a30188c7e5.webp?size=100" 
+                 alt="Profile Picture" 
+                 class="avatar">
+            <div class="profile-content">
+                <h2>uhtai</h2>
+                <nav>
+                    <a class="gradient-on-hover" href="/about-me"><span>About Me</span> <i class="material-icons">north_east</i></a>
+                    <a class="gradient-on-hover" href="/portfolio"><span>Portfolio</span> <i class="material-icons">north_east</i></a>
+                    <a class="gradient-on-hover" href="/services"><span>Services</span> <i class="material-icons">north_east</i></a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="service-text-container">
+            <p class="highlight">
+                <span id="service-text" class="gradient">Programming</span>
+                <span>since 2022.</span>
+            </p>
+        </div>
+        <div class="social-icons">
+            <a href="mailto:hello@allowsleep.dev">
+                <img src="common/mail.png" alt="Email">
+            </a>
+            <a href="https://bsky.app/profile/uhtai.dev" target="_blank">
+                <img src="common/bluesky.png" alt="Bluesky">
+            </a>
+            <a href="https://github.com/uhtai" target="_blank">
+                <img src="common/github.png" alt="GitHub">
+            </a>
+            <a href="https://twitter.com/uhtai" target="_blank">
+                <img src="common/x.png" alt="X (Twitter)">
+            </a>
+            <a href="https://www.roblox.com/users/4341346098/profile" target="_blank">
+                <img src="common/roblox.png" alt="Roblox">
+            </a>
+            <a href="https://create.roblox.com/talent/creators/4341346098" target="_blank">
+                <img src="common/robloxstudio.png" alt="Roblox Studio">
+            </a>
+        </div>
+
+        <footer>
+            <p>Made with ❤️ by <a href="https://github.com/uhtai">uhtai</a></p>
+            <p>© 2025, all rights reserved</p>
+        </footer>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const textElement = document.getElementById("service-text");
+        const services = [
+            "Programming",
+            "Managing Projects",
+            "Designing Games",
+            "Producing Games",
+            "Managing Teams",
+            "Managing Communities",
+            "Developing Businesses",
+        ];
+
+        let index = 0;
+        let fade_time = 250;
+        let animation_time = 3000;
+
+        function changeText() {
+            textElement.classList.add("fade-out");
+            setTimeout(() => {
+                index = (index + 1) % services.length;
+                textElement.textContent = services[index];
+                textElement.classList.remove("fade-out");
+                textElement.classList.add("fade-in");
+                setTimeout(() => {
+                    textElement.classList.remove("fade-in");
+                }, fade_time);
+            }, fade_time);
+        }
+        setInterval(changeText, animation_time);
+    });
+    </script>
 </body>
 </html>
